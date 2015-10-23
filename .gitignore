@@ -20,3 +20,4 @@ deployment.xml
 !/web/uploads/dummyphoto.jpg
 phinx.yml
 /phpunit.xml
+.env
