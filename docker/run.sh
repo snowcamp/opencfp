@@ -7,6 +7,7 @@ wait_for_db() {
 	echo "Wait for the db";
 	sleep 1
     done
+    sleep 5
 }
 
 db_exists() {
@@ -42,5 +43,8 @@ wait_for_db
 create_db
 update_configuration_files
 run_migration
+
+touch /var/log/php_errors.log
+chown www-data:www-data /var/log/php_errors.log
 
 exec /usr/local/bin/apache2-foreground
