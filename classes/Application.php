@@ -83,6 +83,8 @@ class Application extends SilexApplication
         // Application Services...
         $this->register(new ApplicationServiceProvider);
 
+        Request::setTrustedProxies(['172.17.42.1']);
+
         $this->registerGlobalErrorHandler($this);
     }
 

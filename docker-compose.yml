@@ -1,11 +1,14 @@
 web:
   build: .
+  restart: always
   links:
    - db:db
+  ports:
+   - "127.0.0.1:8003:80"
 
 db:
   image: mysql:5.5
   env_file:
    - .env
   volumes_from:
-   - opencfp_db_data
+   - snowcamp_cfp_db
