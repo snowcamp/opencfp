@@ -5,6 +5,8 @@ web:
    - db:db
   ports:
    - "127.0.0.1:8003:80"
+  env_file:
+   - .env
 
 db:
   image: mysql:5.5

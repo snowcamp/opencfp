@@ -32,6 +32,7 @@ OpenCFP is a PHP-based conference talk submission system.
  * [Testing](#testing)
  * [Developer Environment](#developer-environment)
    * [PHP Built-in Web Server](#php-built-in-web-server)
+   * [Docker](#developer-env-docker)
  * [Troubleshooting](#troubleshooting)
 
 <a name="features" />
@@ -562,6 +563,15 @@ $ php -S localhost:8000 -t web web/index_dev.php
 
 You can choose a port other than `8000`. This is a quick way to get started doing development on OpenCFP itself.
 
+<a name="developer-env-docker">
+### Docker
+
+You will need docker and docker-compose:
+
+* copy docker/env.dist into .env (once)
+* create a data container for the DB `docker run -t --name=snowcamp_cfp_db -v /var/lib/mysql busybox true` (once)
+* docker-compose build
+* docker-compose up 
 
 <a name="troubleshooting" />
 ## Troubleshooting

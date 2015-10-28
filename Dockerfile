@@ -25,11 +25,10 @@ RUN chmod 777 /app/vendor/ezyang/htmlpurifier/library/HTMLPurifier/DefinitionCac
 RUN sed -i 's%DocumentRoot /var/www/html%#DocumentRoot /var/www/html%' /etc/apache2/apache2.conf
 
 COPY docker/opencfp.conf /etc/apache2/sites-enabled/opencfp.conf
-COPY docker/production.dist.yml /app/config/production.yml
 COPY docker/phinx.yml.dist /app/phinx.yml
 COPY docker/php.ini /usr/local/etc/php/php.ini
 
-#ENV CFP_ENV=production
+ENV CFP_ENV=development
 
 COPY . /app
 

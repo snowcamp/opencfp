@@ -25,10 +25,16 @@ create_db() {
     fi
 }
 
+setup_environment() {
+   cp docker/$CFP_ENV.dist.yml /app/config/$CFP_ENV.yml
+   sed -i "s/%CFP_ENV%/$CFP_ENV/" /etc/apache2/sites-enabled/opencfp.conf
+   sed -i "s/%CFP_ENV%/$CFP_ENV/" /app/phinx.yml
+}
+
 update_configuration_files() {
-    sed -i "s%host: 127.0.0.1%host: $DB_PORT_3306_TCP_ADDR%" /app/config/production.yml
-    sed -i "s%dsn:.*%dsn: mysql:dbname=cfp;host=$DB_PORT_3306_TCP_ADDR%" /app/config/production.yml
-    sed -i "s#%datatbase_password%#$DB_ENV_MYSQL_ROOT_PASSWORD#" /app/config/production.yml
+    sed -i "s%host: 127.0.0.1%host: $DB_PORT_3306_TCP_ADDR%" /app/config/$CFP_ENV.yml
+    sed -i "s%dsn:.*%dsn: mysql:dbname=cfp;host=$DB_PORT_3306_TCP_ADDR%" /app/config/$CFP_ENV.yml
+    sed -i "s#%datatbase_password%#$DB_ENV_MYSQL_ROOT_PASSWORD#" /app/config/$CFP_ENV.yml
 
     sed -i "s%host: localhost%host: $DB_PORT_3306_TCP_ADDR%" phinx.yml
     sed -i "s%pass: ''%pass: $DB_ENV_MYSQL_ROOT_PASSWORD%" phinx.yml
@@ -36,11 +42,12 @@ update_configuration_files() {
 
 run_migration() {
     cd /app
-    vendor/bin/phinx migrate --environment=production
+    vendor/bin/phinx migrate --environment=$CFP_ENV
 }
 
 wait_for_db
 create_db
+setup_environment
 update_configuration_files
 run_migration
 
