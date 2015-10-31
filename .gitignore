@@ -21,3 +21,4 @@ deployment.xml
 phinx.yml
 /phpunit.xml
 .env
+/nbproject/private/

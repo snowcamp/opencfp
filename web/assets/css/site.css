@@ -5,12 +5,19 @@ body {
   padding: 5.5rem 0;
 }
 
-a {
-  color: #e24b3b;
+a:link {
+  color: #99cc99;
+  border: 0;
+}
+
+a:visited {
+  color: #77bb77;
+  border: 0;
 }
 
 a:hover {
-  color: #e97467;
+  color: #bbddbb;
+  border: 0;
 }
 
 .dashboard {
@@ -18,9 +25,11 @@ a:hover {
 }
 
 .header {
-  background: #e24b3b;
-  color: #FFF;
-  padding: 6rem 0;
+  background-color: #1a1a1a;
+  background-color: rgba(21, 25, 25, 0.8);
+  color: #fafafa;
+  color: rgba(250, 250, 250, 0.8);
+  padding-bottom: 1.625em;
 }
 
 .sidebar {
@@ -140,12 +149,13 @@ a:hover {
  */
 .btn-opencfp--primary {
   background: #FFF;
-  color: #e24b3b;
+  color: #99cc99;
 }
 
 .btn-opencfp--primary:hover {
-  background: #F7F7F7;
-  color: #e24b3b;
+  background-color: #1a1a1a;
+  background-color: rgba(21, 25, 25, 0.8);
+  color: #bbddbb;
 }
 
 .btn-opencfp--light {
@@ -160,13 +170,15 @@ a:hover {
 
 .btn-opencfp--outlined {
   background: transparent;
-  border-color: #FFF;
-  color: #FFF;
+  border-color: #7e8690;
+  color: #99cc99;
 }
 
 .btn-opencfp--outlined:hover {
-  background: #FFF;
-  color: #e24b3b;
+  border-color: #FFF;
+  background-color: #1a1a1a;
+  background-color: rgba(21, 25, 25, 0.8);
+  color: #FFF;
 }
 
 .btn-opencfp--centered {
@@ -184,9 +196,11 @@ a:hover {
 }
 
 .module__header {
-  background: #e24b3b;
-  color: #FFF;
-  padding: 1rem 2rem;
+  background-color: #1a1a1a;
+  background-color: rgba(21, 25, 25, 0.8);
+  color: #fafafa;
+  color: rgba(250, 250, 250, 0.8);
+  padding-bottom: 1.625em;
 }
 
 .module__body {
@@ -295,7 +309,7 @@ a:hover {
 .navbar-opencfp .navbar-nav > .active > a:hover,
 .navbar-opencfp .navbar-nav > .active > a:focus {
   background: none;
-  border-color: #e24b3b;
+  border-color: #99cc99;
 }
 
 .navbar-opencfp .navbar-toggle {
