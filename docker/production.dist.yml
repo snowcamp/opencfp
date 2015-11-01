@@ -3,11 +3,11 @@ application:
   url: https://cfp.snowcamp.io
   email: contact@openconf.com
   eventurl: http://snowcamp.io
-  enddate: Oct. 14th, 2016
+  enddate: Dec. 25th, 2015
   show_submission_count: false
   airport: LYS
-  arrival: 2014-10-26
-  departure: 2014-10-31
+  arrival: 2016-01-20
+  departure: 2016-01-24
   secure_ssl: true
 
 api:

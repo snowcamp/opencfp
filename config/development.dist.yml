@@ -1,11 +1,11 @@
 application:
-  title: OpenCFP
+  title: SnowCamp
   url: http://localhost
-  email: contact@openconf.com
-  eventurl: http://localhost
-  enddate: Oct. 14th, 2016
+  email: contact@snowcamp.io
+  eventurl: http://snowcamp.io
+  enddate: Dec. 25th, 2015
   show_submission_count: false
-  airport: MIA
+  airport: LYS
   arrival: 2014-10-26
   departure: 2014-10-31
   secure_ssl: false
