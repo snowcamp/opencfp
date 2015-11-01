@@ -56,7 +56,7 @@ a:hover {
 }
 
 .section--primary {
-  background: #e24b3b;
+  background: rgba(21, 25, 25, 0.8);
   color: #FFF;
 }
 
@@ -107,6 +107,7 @@ a:hover {
 .btn-opencfp,
 .btn-opencfp:hover {
   text-decoration: none;
+  color: #ffffff;
 }
 
 /**
