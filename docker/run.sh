@@ -45,11 +45,22 @@ run_migration() {
     vendor/bin/phinx migrate --environment=$CFP_ENV
 }
 
+link_data_dir() {
+    if [ ! -f /data/uploads/dummyphoto.jpg ]; then
+	install -d -m 0750 -o www-data -g www-data /data/uploads
+	cp /app/web/uploads/dummyphoto.jpg /data/uploads
+    fi
+    chown -R www-data.www-data /data/uploads
+    rm -rf /app/web/uploads
+    ln -s /data/uploads /app/web/uploads
+}
+
 wait_for_db
 create_db
 setup_environment
 update_configuration_files
 run_migration
+link_data_dir
 
 touch /var/log/php_errors.log
 chown www-data:www-data /var/log/php_errors.log

@@ -7,6 +7,8 @@ web:
    - "127.0.0.1:8003:80"
   env_file:
    - .env
+  volumes_from:
+   - snowcamp_cfp_data
 
 db:
   image: mysql:5.5

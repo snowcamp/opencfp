@@ -570,6 +570,7 @@ You will need docker and docker-compose:
 
 * copy docker/env.dist into .env (once)
 * create a data container for the DB `docker run -t --name=snowcamp_cfp_db -v /var/lib/mysql busybox true` (once)
+* create a data container for uploads (avatars): `docker run -t --name=snowcamp_cfp_data -v /data busybox true` (once)
 * docker-compose build
 * docker-compose up 
 
