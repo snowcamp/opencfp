@@ -50,6 +50,7 @@ link_data_dir() {
 	install -d -m 0750 -o www-data -g www-data /data/uploads
 	cp /app/web/uploads/dummyphoto.jpg /data/uploads
     fi
+    chmod 0755 /data
     chown -R www-data.www-data /data/uploads
     rm -rf /app/web/uploads
     ln -s /data/uploads /app/web/uploads
