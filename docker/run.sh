@@ -2,6 +2,23 @@
 
 set -ex
 
+error() {
+    echo "*** ERROR $@" >2
+    exit 1
+}
+
+check_env() {
+    if [ -z "$DB_PORT_3306_TCP_ADDR" ]; then
+	error "No db connexion, did you forget --link ?"
+    fi
+    if [ -z "$MANDRILL_USERNAME" ]; then
+	error "No MANDRILL_USERNAME variable"
+    fi
+    if [ -z "$MANDRILL_PASSWORD" ]; then
+	error "No MANDRILL_PASSWORD variable"
+    fi
+}
+
 wait_for_db() {
     while ! mysql -h$DB_PORT_3306_TCP_ADDR -uroot -p$DB_ENV_MYSQL_ROOT_PASSWORD -e "show databases" >/dev/null; do 
 	echo "Wait for the db";
@@ -32,9 +49,13 @@ setup_environment() {
 }
 
 update_configuration_files() {
-    sed -i "s%host: 127.0.0.1%host: $DB_PORT_3306_TCP_ADDR%" /app/config/$CFP_ENV.yml
-    sed -i "s%dsn:.*%dsn: mysql:dbname=cfp;host=$DB_PORT_3306_TCP_ADDR%" /app/config/$CFP_ENV.yml
-    sed -i "s#%datatbase_password%#$DB_ENV_MYSQL_ROOT_PASSWORD#" /app/config/$CFP_ENV.yml
+    sed -i \
+	-e "s%host: 127.0.0.1%host: $DB_PORT_3306_TCP_ADDR%" \
+	-e "s%dsn:.*%dsn: mysql:dbname=cfp;host=$DB_PORT_3306_TCP_ADDR%" \
+	-e "s#%datatbase_password%#$DB_ENV_MYSQL_ROOT_PASSWORD#" \
+	-e "s#%mail_username%#$MANDRILL_USERNAME#" \
+	-e "s#%mail_password%#$MANDRILL_PASSWORD#" \
+	/app/config/$CFP_ENV.yml
 
     sed -i "s%host: localhost%host: $DB_PORT_3306_TCP_ADDR%" phinx.yml
     sed -i "s%pass: ''%pass: $DB_ENV_MYSQL_ROOT_PASSWORD%" phinx.yml
@@ -56,6 +77,7 @@ link_data_dir() {
     ln -s /data/uploads /app/web/uploads
 }
 
+check_env
 wait_for_db
 create_db
 setup_environment

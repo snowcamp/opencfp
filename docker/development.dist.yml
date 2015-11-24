@@ -24,9 +24,9 @@ database:
   password: %datatbase_password%
 
 mail:
-  host: ~
-  port: ~
-  username: ~
-  password: ~
+  host: smtp.mandrillapp.com
+  port: 587
+  username: %mail_username%
+  password: %mail_password%
   encryption: ~
   auth_mode: ~
